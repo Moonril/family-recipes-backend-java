@@ -1,9 +1,12 @@
 package it.moonril.family_recipes_backend.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import it.moonril.family_recipes_backend.enums.RecipeType;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Data
@@ -22,6 +25,11 @@ public class Recipe {
     private String description;
     @Enumerated(EnumType.STRING)
     private RecipeType recipeType;
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "recipe")
+    private List<Ingredient> ingredients = new ArrayList<>();
+
 
 
 }
