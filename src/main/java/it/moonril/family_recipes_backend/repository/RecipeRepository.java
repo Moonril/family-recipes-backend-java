@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface RecipeRepository extends JpaRepository<Recipe, Integer>, PagingAndSortingRepository<Recipe, Integer> {
-    Optional<Recipe> findByTitle(String name);
+    Optional<Recipe> findByTitle(String title);
     @Query("SELECT r FROM Recipe r WHERE LOWER(r.title) LIKE LOWER(CONCAT('%', :title, '%'))")
-    List<Recipe> findByTitleContainingIgnoreCase(@Param("title") String name);
+    List<Recipe> findByTitleContainingIgnoreCase(@Param("title") String title);
 }
