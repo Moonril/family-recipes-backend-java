@@ -45,11 +45,11 @@ public class IngredientService {
         return ingredientRepository.findById(id).orElseThrow(() -> new NotFoundException("Ingredient with id: " + id + " not found"));
     }
 
-    public List<Ingredient> getIngredientsByTitle(String title) throws NotFoundException{
-        List<Ingredient> ingredients = ingredientRepository.findByNameContainingIgnoreCase(title);
+    public List<Ingredient> getIngredientsByName(String name) throws NotFoundException{
+        List<Ingredient> ingredients = ingredientRepository.findByNameContainingIgnoreCase(name);
 
         if (ingredients.isEmpty()) {
-            throw new NotFoundException("Nessun ingrediente trovato con questo nome: " + title);
+            throw new NotFoundException("Nessun ingrediente trovato con questo nome: " + name);
         }
 
         return ingredients;
