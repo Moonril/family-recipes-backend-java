@@ -68,15 +68,8 @@ public class JwtFilter extends OncePerRequestFilter {
 
         AntPathMatcher matcher = new AntPathMatcher();
 
-        // Escludi solo GET e POST su /camping/bookings/**
-        if (matcher.match("/camping/bookings/**", path) && (method.equals("GET") || method.equals("POST"))) {
-            return true;
-        }
-        if (matcher.match("/restaurant/reservations/**", path) && (method.equals("POST"))) {
-            return true;
-        }
-
-        if (matcher.match("/accommodations/**", path) && (method.equals("GET"))) {
+        // Escludi solo GET  su /recipes/**
+        if (matcher.match("/recipes/**", path) && (method.equals("GET"))) {
             return true;
         }
 
