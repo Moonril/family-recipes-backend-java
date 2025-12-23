@@ -19,6 +19,6 @@ public class UserDto {
     @NotEmpty(message = "The username field cannot be empty")
     private String username;
     @NotEmpty(message = "The password field cannot be empty")
-    private String password; // dfgadsgaa
+    private String password;
 
 }
