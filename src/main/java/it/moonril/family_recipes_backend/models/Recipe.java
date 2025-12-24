@@ -27,7 +27,7 @@ public class Recipe {
     private RecipeType recipeType;
 
     @JsonIgnore
-    @ManyToMany(mappedBy = "recipe")
+    @ManyToMany(mappedBy = "recipes")
     private List<Ingredient> ingredients = new ArrayList<>();
 
 

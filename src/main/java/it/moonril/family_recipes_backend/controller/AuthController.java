@@ -60,8 +60,6 @@ public class AuthController {
         User user = optionalUser.get();
 
         UserDto userDto = new UserDto(
-                user.getName(),
-                user.getSurname(),
                 user.getEmail(),
                 user.getUsername(),
                 ""

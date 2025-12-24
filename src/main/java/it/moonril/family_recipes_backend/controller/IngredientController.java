@@ -36,8 +36,8 @@ public class IngredientController {
         return ingredientService.getIngredient(id);
     }
 
-    @GetMapping()
-    public List<Ingredient> getIngredientByName(@PathVariable String name) throws NotFoundException {
+    @GetMapping("/name")
+    public List<Ingredient> getIngredientsByName(@PathVariable String name) throws NotFoundException {
         return ingredientService.getIngredientsByName(name);
     }
 

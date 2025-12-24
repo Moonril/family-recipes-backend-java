@@ -20,8 +20,6 @@ public class User implements UserDetails {
     @SequenceGenerator(name = "user_seq", sequenceName = "user_sequence", initialValue = 1000, allocationSize = 1)
     private long id;
 
-    private String name;
-    private String surname;
 
     @Column(unique = true)
     private String username;

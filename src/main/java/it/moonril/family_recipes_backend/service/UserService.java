@@ -34,8 +34,6 @@ public class UserService {
 
     public User saveUser(UserDto userDto){
         User user = new User();
-        user.setName(userDto.getName());
-        user.setSurname(userDto.getSurname());
         user.setEmail(userDto.getEmail());
         user.setUsername(userDto.getUsername());
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
@@ -66,10 +64,8 @@ public class UserService {
 
         User userToUpdate = getUser(id);
 
-        userToUpdate.setName(userDto.getName());
         userToUpdate.setEmail(userDto.getEmail());
         userToUpdate.setUsername(userDto.getUsername());
-        userToUpdate.setSurname(userDto.getSurname());
         if (!passwordEncoder.matches(userDto.getPassword(), userToUpdate.getPassword())){
             userToUpdate.setPassword(passwordEncoder.encode(userDto.getPassword()));
         }

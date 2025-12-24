@@ -35,8 +35,8 @@ public class RecipeController {
         return recipeService.getRecipe(id);
     }
 
-    @GetMapping()
-    public List<Recipe> getRecipeByTitle(@PathVariable String title) throws NotFoundException {
+    @GetMapping("/title")
+    public List<Recipe> getRecipesByTitle(@PathVariable String title) throws NotFoundException {
         return recipeService.getRecipesByTitle(title);
     }
 

@@ -1,8 +1,11 @@
 package it.moonril.family_recipes_backend.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.Set;
 
 @Data
 @Entity
@@ -16,4 +19,13 @@ public class Ingredient {
 
     @Column(unique = true)
     private String name;
+
+    @JsonIgnore
+    @ManyToMany
+    @JoinTable(
+            name = "ingredient_recipe",
+            joinColumns = @JoinColumn(name = "ingredient_id"),
+            inverseJoinColumns = @JoinColumn(name = "recipe_id")
+    )
+    private Set<Recipe> recipes;
 }
