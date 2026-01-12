@@ -37,7 +37,7 @@ public class UserService {
         user.setEmail(userDto.getEmail());
         user.setUsername(userDto.getUsername());
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
-        user.setUserType(UserType.BABBO);
+        user.setUserType(UserType.ADMIN);
 
         return userRepository.save(user);
     }

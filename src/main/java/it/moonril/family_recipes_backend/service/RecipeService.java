@@ -32,6 +32,7 @@ public class RecipeService {
         recipe.setTitle(recipeDto.getTitle());
         recipe.setDescription(recipeDto.getDescription());
         recipe.setRecipeType(recipeDto.getRecipeType());
+        //todo if there's ingredients, check if they exist otherwise, create new ingredient
 
         return recipeRepository.save(recipe);
     }

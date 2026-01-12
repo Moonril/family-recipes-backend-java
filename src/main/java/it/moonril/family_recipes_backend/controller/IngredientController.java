@@ -43,7 +43,7 @@ public class IngredientController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    @PreAuthorize("hasAuthority('ADMIN')") //todo cambia gestione authority
+    @PreAuthorize("hasAuthority('ADMIN')")
     public Ingredient saveIngredient(@RequestBody @Validated IngredientDto ingredientDto, BindingResult bindingResult) throws NotFoundException, ValidationException {
         if (bindingResult.hasErrors()) {
             throw new ValidationException(bindingResult.getAllErrors().stream()
