@@ -21,11 +21,6 @@ public class Ingredient {
     private String name;
 
     @JsonIgnore
-    @ManyToMany
-    @JoinTable(
-            name = "ingredient_recipe",
-            joinColumns = @JoinColumn(name = "ingredient_id"),
-            inverseJoinColumns = @JoinColumn(name = "recipe_id")
-    )
+    @ManyToMany(mappedBy = "ingredients")
     private Set<Recipe> recipes;
 }

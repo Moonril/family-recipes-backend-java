@@ -3,7 +3,9 @@ package it.moonril.family_recipes_backend.service;
 import it.moonril.family_recipes_backend.dto.RecipeDto;
 import it.moonril.family_recipes_backend.exceptions.EmailAlreadyExistsException;
 import it.moonril.family_recipes_backend.exceptions.NotFoundException;
+import it.moonril.family_recipes_backend.models.Ingredient;
 import it.moonril.family_recipes_backend.models.Recipe;
+import it.moonril.family_recipes_backend.repository.IngredientRepository;
 import it.moonril.family_recipes_backend.repository.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -12,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +22,9 @@ import java.util.Optional;
 public class RecipeService {
     @Autowired
     private RecipeRepository recipeRepository;
+
+    @Autowired
+    private IngredientRepository ingredientRepository;
 
     public Recipe saveRecipe(RecipeDto recipeDto) throws NotFoundException {
         Optional<Recipe> existingRecipe = recipeRepository.findByTitle(recipeDto.getTitle());
@@ -32,7 +38,24 @@ public class RecipeService {
         recipe.setTitle(recipeDto.getTitle());
         recipe.setDescription(recipeDto.getDescription());
         recipe.setRecipeType(recipeDto.getRecipeType());
-        //todo if there's ingredients, check if they exist otherwise, create new ingredient
+
+
+        List<Ingredient> recipeIngredients = new ArrayList<>();
+
+        for (String ingredientName : recipeDto.getIngredients()) {
+
+            Ingredient ingredient = ingredientRepository
+                    .findByNameIgnoreCase(ingredientName.trim())
+                    .orElseGet(() -> {
+                        Ingredient newIngredient = new Ingredient();
+                        newIngredient.setName(ingredientName.trim());
+                        return ingredientRepository.save(newIngredient);
+                    });
+
+            recipeIngredients.add(ingredient);
+        }
+
+        recipe.setIngredients(recipeIngredients);
 
         return recipeRepository.save(recipe);
     }

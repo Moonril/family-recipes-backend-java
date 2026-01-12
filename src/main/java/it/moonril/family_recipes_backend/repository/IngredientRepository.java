@@ -11,7 +11,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IngredientRepository extends JpaRepository<Ingredient, Integer>, PagingAndSortingRepository<Ingredient, Integer> {
-    Optional<Ingredient> findByName(String name);
+    Optional<Ingredient> findByName(String name); //todo rimuovi?
     @Query("SELECT n FROM Ingredient n WHERE LOWER(n.name) LIKE LOWER(CONCAT('%', :name, '%'))")
     List<Ingredient> findByNameContainingIgnoreCase(@Param("name") String name);
+    Optional<Ingredient> findByNameIgnoreCase(String name);
 }

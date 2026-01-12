@@ -23,7 +23,7 @@ public class IngredientService {
     private IngredientRepository ingredientRepository;
 
     public Ingredient saveIngredient(IngredientDto ingredientDto) throws NotFoundException {
-        Optional<Ingredient> existingIngredient = ingredientRepository.findByName(ingredientDto.getName());
+        Optional<Ingredient> existingIngredient = ingredientRepository.findByNameIgnoreCase(ingredientDto.getName());
 
         if (existingIngredient.isPresent()) {
             throw new EmailAlreadyExistsException(ingredientDto.getName());

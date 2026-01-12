@@ -27,7 +27,12 @@ public class Recipe {
     private RecipeType recipeType;
 
     @JsonIgnore
-    @ManyToMany(mappedBy = "recipes")
+    @ManyToMany
+    @JoinTable(
+            name = "recipe_ingredient",
+            joinColumns = @JoinColumn(name = "recipe_id"),
+            inverseJoinColumns = @JoinColumn(name = "ingredient_id")
+    )
     private List<Ingredient> ingredients = new ArrayList<>();
 
 
