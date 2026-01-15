@@ -40,7 +40,7 @@ public class RecipeController {
         return recipeService.getRecipesByTitle(title);
     }
 
-    @PostMapping
+    @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasAuthority('ADMIN')") //todo cambia gestione authority
     public Recipe saveRecipe(@RequestBody @Validated RecipeDto recipeDto, BindingResult bindingResult) throws NotFoundException, ValidationException {
