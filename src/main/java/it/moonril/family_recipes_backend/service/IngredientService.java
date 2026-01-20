@@ -1,11 +1,9 @@
 package it.moonril.family_recipes_backend.service;
 
 import it.moonril.family_recipes_backend.dto.IngredientDto;
-import it.moonril.family_recipes_backend.dto.RecipeDto;
-import it.moonril.family_recipes_backend.exceptions.EmailAlreadyExistsException;
+import it.moonril.family_recipes_backend.exceptions.RecipeAlreadyExistsException;
 import it.moonril.family_recipes_backend.exceptions.NotFoundException;
 import it.moonril.family_recipes_backend.models.Ingredient;
-import it.moonril.family_recipes_backend.models.Recipe;
 import it.moonril.family_recipes_backend.repository.IngredientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -26,7 +24,7 @@ public class IngredientService {
         Optional<Ingredient> existingIngredient = ingredientRepository.findByNameIgnoreCase(ingredientDto.getName());
 
         if (existingIngredient.isPresent()) {
-            throw new EmailAlreadyExistsException(ingredientDto.getName());
+            throw new RecipeAlreadyExistsException(ingredientDto.getName());
         }
         Ingredient ingredient = new Ingredient();
 

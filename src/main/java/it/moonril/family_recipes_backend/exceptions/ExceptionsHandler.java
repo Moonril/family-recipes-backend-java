@@ -62,9 +62,9 @@ public class ExceptionsHandler {
         return buildError("Accesso negato: " + ex.getMessage());
     }
 
-    @ExceptionHandler(EmailAlreadyExistsException.class)
+    @ExceptionHandler(RecipeAlreadyExistsException.class)
     @ResponseStatus(HttpStatus.CONFLICT)
-    public ApiError handleEmailAlreadyExists(EmailAlreadyExistsException ex) {
+    public ApiError handleEmailAlreadyExists(RecipeAlreadyExistsException ex) {
         return buildError("Email already exists: " + ex.getMessage());
     }
 }

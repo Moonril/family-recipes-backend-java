@@ -1,7 +1,7 @@
 package it.moonril.family_recipes_backend.service;
 
 import it.moonril.family_recipes_backend.dto.RecipeDto;
-import it.moonril.family_recipes_backend.exceptions.EmailAlreadyExistsException;
+import it.moonril.family_recipes_backend.exceptions.RecipeAlreadyExistsException;
 import it.moonril.family_recipes_backend.exceptions.NotFoundException;
 import it.moonril.family_recipes_backend.models.Ingredient;
 import it.moonril.family_recipes_backend.models.Recipe;
@@ -30,7 +30,7 @@ public class RecipeService {
         Optional<Recipe> existingRecipe = recipeRepository.findByTitle(recipeDto.getTitle());
 
         if (existingRecipe.isPresent()) {
-            throw new EmailAlreadyExistsException(recipeDto.getTitle());
+            throw new RecipeAlreadyExistsException(recipeDto.getTitle());
         }
         Recipe recipe = new Recipe();
 
