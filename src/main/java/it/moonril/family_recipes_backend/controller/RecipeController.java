@@ -30,7 +30,7 @@ public class RecipeController {
         return recipeService.getAllRecipes(page, size, sortBy);
     }
 
-    @GetMapping("/id")
+    @GetMapping("/{id}")
     public Recipe getRecipeById(@PathVariable int id) throws NotFoundException {
         return recipeService.getRecipe(id);
     }
