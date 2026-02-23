@@ -92,7 +92,7 @@ public class RecipeService {
 
     public void deleteRecipe(int id) throws NotFoundException{
         Recipe recipeToDelete = getRecipe(id);
-
+//        recipeToDelete.getIngredients().clear(); unsure
         recipeRepository.delete(recipeToDelete);
     }
 

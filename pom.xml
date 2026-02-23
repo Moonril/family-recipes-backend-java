@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>it.epicode</groupId>
-	<artifactId>camping-elicriso-progetto-finale-back-end</artifactId>
+	<artifactId>family-recipes-backend-java</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>camping-elicriso-progetto-finale-back-end</name>
+	<name>family-recipes-backend-java</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
